@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
-import { Button } from './common/components';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import { HomePage } from './screens/HomePage';
+
+const Index = () => <HomePage />;
+const About = () => <About />;
 
 class App extends Component {
   onPress = () => alert('Hello, too');
 
   render() {
     return (
-      <div className="App">
-        Hello <Button title="World" onClick={this.onPress} />
-      </div>
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about/">About</Link>
+              </li>
+            </ul>
+          </nav>
+          <Route path="/" exact={true} component={Index} />
+          <Route path="/about/" component={About} />
+        </div>
+      </Router>
     );
   }
 }
