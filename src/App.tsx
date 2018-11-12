@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Hello <Button title="World" onClick={this.onPress} />{' '}
+        Hello <Button title="World" onClick={this.onPress} />
       </div>
     );
   }
