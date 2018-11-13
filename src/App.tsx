@@ -1,32 +1,28 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import { HomePage } from './screens/HomePage';
+import { AboutPage } from './screens/AboutPage';
 
 const Index = () => <HomePage />;
-const About = () => <About />;
+const About = () => <AboutPage />;
+const NoMatch = () => <div data-testid="no-match-screen"> No match found</div>
 
-class App extends Component {
+class App extends React.Component {
   onPress = () => alert('Hello, too');
 
   render() {
     return (
-      <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about/">About</Link>
-              </li>
-            </ul>
-          </nav>
-          <Route path="/" exact={true} component={Index} />
-          <Route path="/about/" component={About} />
-        </div>
-      </Router>
+        <>
+          <Link to="/">Home</Link>
+          <Link to="/about/">About</Link>
+
+          <Switch>
+            <Route exact={true} path="/" component={Index} />
+            <Route exact={true} path="/about/" component={About} />
+            <Route component={NoMatch} />
+          </Switch>
+        </>
     );
   }
 }
