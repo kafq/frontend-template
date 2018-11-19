@@ -14,9 +14,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "format": "prettier --config ./.prettierrc --list-different \"src/**/*{.ts,.tsx,.js}\"",
+    "lint": "tslint -p ./ -t verbose 'src/**/*.{ts,tsx}'",
     "test": "react-scripts test",
     "test:coverage": "npm test -- --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

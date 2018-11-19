@@ -11,7 +11,7 @@ interface InitializeAppAction {
 }
 
 interface UpdateAppConfigAction {
-  type: ActionTypes.UPDATE_APP_CONFIG
+  type: ActionTypes.UPDATE_APP_CONFIG;
 }
 
 export function updateAppConfig(newConfig: ConfigModel) {
@@ -19,19 +19,21 @@ export function updateAppConfig(newConfig: ConfigModel) {
     type: ActionTypes.UPDATE_APP_CONFIG,
     payload: {
       isAppLoaded: newConfig.isAppLoaded,
-    }
-  }
+    },
+  };
 }
 
 export function initializeApp() {
   return async (dispatch: Dispatch) => {
-      setTimeout(() => {
-        // All api calls and fetching tasks will go here
-        dispatch(updateAppConfig({
-          isAppLoaded: true
-        }));
-      }, 1000)
-    }
+    setTimeout(() => {
+      // All api calls and fetching tasks will go here
+      dispatch(
+        updateAppConfig({
+          isAppLoaded: true,
+        }),
+      );
+    }, 1000);
+  };
 }
 
 export type Action = InitializeAppAction | UpdateAppConfigAction;

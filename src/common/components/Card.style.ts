@@ -7,8 +7,8 @@ const styles = {
     minHeight: '300px',
     minWidth: '180px',
     border: '1px solid #cdcdcd',
-    display: 'inline-block',  
-  })
-}
+    display: 'inline-block',
+  }),
+};
 
-export { styles }
+export { styles };

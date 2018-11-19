@@ -1,10 +1,10 @@
 {
   "defaultSeverity": "warning",
   "extends": [
+    "tslint:recommended",
     "tslint-react",
     "tslint-config-airbnb",
-    "tslint-config-prettier",
-    "tslint:recommended"
+    "tslint-config-prettier"
   ],
   "rules": {
     "curly": true,
@@ -20,7 +20,6 @@
     "object-literal-sort-keys": false,
     "arrow-parens": false,
     "ter-arrow-parens": false,
-    "esSpecCompliant": true,
     "no-var-requires": false,
     "object-literal-shorthand": false,
     "no-console": [
@@ -31,20 +30,13 @@
       "dir",
       "trace"
     ],
-    /* Import names are currently under discussion of being improved.
-    This will be a workaround to not flag an error for misnamed libs.
-     */
     "import-name": false,
-    "no-unused-variable": [true, {"ignore-pattern": "^_"}],
     "variable-name": [
       true,
       "allow-pascal-case",
       "ban-keywords",
       "check-format"
     ]
-  },
-  "jsRules": {
-    "esSpecCompliant": true,
   },
   "rulesDirectory": [],
   "linterOptions": {
