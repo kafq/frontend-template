@@ -2,7 +2,7 @@
 
 # General
 
-Contains an "I've used it and it worked nicely" suggestion for file structure and overall architecture in a project. That's a CRA, but it has Typescript with `tslint` setup in a nice way with airbnb and prettier configs. All linters run in precommit stage with `husky` and `lint-staged`. There is a `common`
+Contains an "I've used it and it worked nicely" suggestion for file structure and overall architecture in a project. That's a CRA, but it has Typescript with `tslint` setup in a nice way with airbnb and prettier configs. All linters run in precommit stage with `husky` and `lint-staged`
 
 # Testing
 
