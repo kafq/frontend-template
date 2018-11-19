@@ -1,7 +1,11 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  NavLink,
+  withRouter,
+} from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { HomePage } from './screens/HomePage';
 import { AboutPage } from './screens/AboutPage';
 import { initializeApp } from './actions';
@@ -17,23 +21,23 @@ interface AppProps {
 }
 
 class App extends React.Component<AppProps> {
-  onPress = () => alert('Hello, too');
-
   componentDidMount() {
+    // Potentially fetches app configuration and data from backend
     this.props.initializeApp();
   }
 
   render() {
     const { isAppLoaded } = this.props;
+
     if (isAppLoaded) {
       return (
         <>
-          <Link to="/">Home</Link>
-          <Link to="/about/">About</Link>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/about/">About</NavLink>
 
           <Switch>
             <Route exact={true} path="/" component={Index} />
-            <Route exact={true} path="/about/" component={About} />
+            <Route path="/about/" component={About} />
             <Route component={NoMatch} />
           </Switch>
         </>
@@ -41,18 +45,20 @@ class App extends React.Component<AppProps> {
     }
 
     return (
-      <div>
+      <div data-testid="loading-screen">
         <h2>Loading...</h2>
       </div>
     );
   }
 }
 
-export default connect(
+// used withRouter to pass location to switch and update screens
+
+export default withRouter<any>(connect(
   (state: StateModel) => ({
     isAppLoaded: state.config.isAppLoaded,
   }),
   {
     initializeApp,
   },
-)(App);
+)(App));
