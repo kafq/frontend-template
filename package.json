@@ -15,7 +15,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "npm test -- --coverage",
     "eject": "react-scripts eject"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -33,13 +41,24 @@
     "@types/react-dom": "^16.0.9",
     "@types/react-redux": "^6.0.9",
     "@types/react-router-dom": "^4.3.1",
+    "husky": "^1.1.4",
     "jest-dom": "^2.1.1",
+    "jest-emotion": "^9.2.11",
+    "lint-staged": "^8.0.4",
     "react-testing-library": "^5.2.3",
+    "redux-devtools-extension": "^2.13.5",
     "redux-thunk": "^2.3.0",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.1.6"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
   }
 }
