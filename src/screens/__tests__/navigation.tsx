@@ -1,12 +1,15 @@
 import React from 'react';
 import { fireEvent } from 'react-testing-library';
 
-import { renderWithHistory as render } from '../../test-utils';
+import { render } from '../../test-utils';
 import App from '../../App';
 
 describe('App navigates correctly', () => {
+
   it('renders correctly', () => {
-    const { getByTestId, getByText, queryByTestId } = render(<App />);
+    const { getByTestId, getByText, queryByTestId } = render(<App />, {
+      initialState: { config: { isAppLoaded: true } },
+    });
 
     expect(getByTestId('home-screen')).toBeInTheDocument();
     expect(queryByTestId('about-screen')).not.toBeInTheDocument();
@@ -16,9 +19,19 @@ describe('App navigates correctly', () => {
   });
 
   it('display no match page on invalid route', () => {
-    const { queryByTestId } = render(<App />, {
+    const { getByTestId } = render(<App />, {
       route: '/not-matching-route/',
+      initialState: { config: { isAppLoaded: true }},
     });
-    expect(queryByTestId('no-match-screen')).toBeInTheDocument();
+
+    expect(getByTestId('no-match-screen')).toBeInTheDocument();
+  });
+
+  it('display loading screen', () => {
+    const { getByTestId } = render(<App />, {
+      initialState: { config: { isAppLoaded: false }},
+    });
+
+    expect(getByTestId('loading-screen')).toBeInTheDocument();
   });
 });
